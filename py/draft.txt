@@ -1,0 +1,59 @@
+def XXsensor_information_gen(ts, si, ati, ats, status):
+    queue.enqueue(ati)
+    global sum
+    sum = sum + ati
+    ret = False
+
+    if queue.size() > NP1:
+        old_t = queue.dequeue()
+        sum = sum + old_t
+        #print(si, __queue.show_items())
+
+    if sum > TP1:
+        data_temp = dict(df.iloc[-1])
+        data_temp['TimeSimulation'] = ts
+        data_temp[si] = status
+        rows_list.append(data_temp)
+        ret = True
+
+    return ret
+
+
+def sensor_information_one(ts, si, ati, ats, status):
+    __queue = sensorsQueue[si]
+    __queue.enqueue(ati)
+    global sum
+    sum = sum + ati
+    ret = False
+
+    if __queue.size() > NP1:
+        old_t = __queue.dequeue()
+        sum = sum + old_t
+        #print(si, __queue.show_items())
+
+    if sum > TP1:
+        data_temp = dict(df.iloc[-1])
+        data_temp['TimeSimulation'] = ts
+        data_temp[si] = status
+        rows_list.append(data_temp)
+        ret = True
+
+    return ret
+
+
+
+def XXXsensor_information_two(ts, si, ati, ats, status):
+    __queue = sensorsQueue[si]
+    __queue.enqueue(ats)
+    ret = False
+
+    if (__queue.size() > NP1) & (__queue.mean() < TP1):
+        data_temp = dict(df.iloc[-1])
+        data_temp['TimeSimulation'] = ts
+        data_temp[si] = status
+        rows_list.append(data_temp)
+        #print(si, __queue.show_items())
+        __queue.dequeue()
+        ret = True
+
+    return ret

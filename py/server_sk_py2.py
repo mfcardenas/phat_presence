@@ -1,5 +1,5 @@
 from socket import *
-from MQueue import MQueue
+from mqueue import MQueue
 import pandas as pd
 
 host = "localhost"

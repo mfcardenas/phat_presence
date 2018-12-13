@@ -18,8 +18,8 @@ class MQueue:
     def size(self):
         return len(self.items)
 
-    def show_items(self):
-        print(self.items)
+    def get_items(self):
+        return self.items
 
     def mean(self):
         return np.mean(self.items)
