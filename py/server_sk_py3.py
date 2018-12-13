@@ -1,11 +1,20 @@
 from socket import *
 from mqueue import MQueue
 from constants import Const
+from connectionws import ConnectionWS
 
 import time
 import pandas as pd
 
 cons = Const()
+conn = ConnectionWS()
+conn.ports[60000, 60001, 60002, 60003, 60004, 60005]
+
+conn.set_connection()
+
+print conn.get_data()
+
+
 addr = (cons.host, cons.port)
 
 sock = socket(AF_INET, SOCK_DGRAM)

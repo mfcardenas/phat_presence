@@ -10,7 +10,7 @@ class ConnectionWS:
         self.socks = []
         self.buff = 512
 
-    def get_connection(self):
+    def set_connection(self):
         for i in self.ports:
             addr = (self.host, self.ports[i])
             sock = socket(AF_INET, SOCK_DGRAM)
