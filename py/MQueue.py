@@ -1,14 +1,16 @@
 import numpy as np
 
+
 class MQueue:
+
     def __init__(self):
         self.items = []
 
-    def isEmpty(self):
+    def is_empty(self):
         return self.items == []
 
     def enqueue(self, item):
-        self.items.insert(0,item)
+        self.items.insert(0, item)
 
     def dequeue(self):
         return self.items.pop()
@@ -16,8 +18,8 @@ class MQueue:
     def size(self):
         return len(self.items)
 
-    def showItems(self):
-        print self.items
+    def show_items(self):
+        print(self.items)
 
     def mean(self):
         return np.mean(self.items)
