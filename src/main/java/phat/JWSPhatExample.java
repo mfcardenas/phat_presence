@@ -27,22 +27,30 @@ public class JWSPhatExample extends WebSocketClient {
         super(serverUri, httpHeaders);
     }
 
+    public static Logger getLogger() {
+        return logger;
+    }
+
+    public static void setLogger(Logger logger) {
+        JWSPhatExample.logger = logger;
+    }
+
     @Override
     public void onOpen(ServerHandshake handshakedata) {
         send("Hello, it is me. Chuki :)");
-        logger.info("opened connection");
+        getLogger().info("opened connection");
         // if you plan to refuse connection based on ip or httpfields overload: onWebsocketHandshakeReceivedAsClient
     }
 
     @Override
     public void onMessage(String message) {
-        logger.info("received: " + message);
+        getLogger().info("received: " + message);
     }
 
     @Override
     public void onClose(int code, String reason, boolean remote) {
         // The codecodes are documented in class org.java_websocket.framing.CloseFrame
-        logger.info("Connection closed by " + (remote ? "remote peer" : "us") + " Code: " + code + " Reason: " + reason);
+        getLogger().info("Connection closed by " + (remote ? "remote peer" : "us") + " Code: " + code + " Reason: " + reason);
     }
 
     @Override
@@ -51,9 +59,13 @@ public class JWSPhatExample extends WebSocketClient {
         // if the error is fatal then onClose will be called additionally
     }
 
+    public JWSPhatExample() {
+    }
+
     public static void main(String[] args) throws URISyntaxException {
         JWSPhatExample c = new JWSPhatExample(new URI("ws://localhost:8090")); // more about drafts here: http://github.com/TooTallNate/Java-WebSocket/wiki/Drafts
         c.connect();
+
     }
 
 }
